@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zbooma/screens/TheForm/form.dart';
+
 import 'package:zbooma/screens/splashome/splashhome.dart';
-import 'package:zbooma/screens/test.dart';
-import 'package:zbooma/screens/worktrip/worktrip.dart';
 
 void main() {
   runApp(const MyApp());
