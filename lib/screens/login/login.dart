@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:zbooma/custom_widget/Bottoms/custom_Bottoms.dart';
-import 'package:zbooma/custom_widget/TextField/custom_textfield.dart';
+import 'package:zbooma/custom_widget/TextField/custom_textfeild.dart';
 import 'package:zbooma/custom_widget/cards/custom_card.dart';
 import 'package:zbooma/screens/BottomNevgaterBar/BNB.dart';
 import 'package:zbooma/style/size.dart';
@@ -45,7 +46,9 @@ class LOGIN extends StatelessWidget {
                         ),
                         SizedBox(height: AppSize.height(context, 10)),
                         Custom_field(
-                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
                           isPassword: false,
                           labelText: 'رقم الهاتف',
                           controller: phoneController,
@@ -77,7 +80,7 @@ class LOGIN extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: -AppSize.height(context, 260),
+                    top: AppSize.height(context, 260),
                     left: AppSize.width(context, 100),
                     child: Image.asset(
                       "assets/Component.png",

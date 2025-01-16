@@ -26,42 +26,40 @@ class _DATAState extends State<DATA> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(104),
-        child: Column(
-          children: [
-            AppBar(
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.black,
-              elevation: 0,
-              flexibleSpace: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
+        child: Container(
+          color: Colors.black,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              children: [
+                SizedBox(height: 30), // مسافة من الأعلى
+                Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.only(top: 30),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'مرحبا بك!',
-                              textDirection: TextDirection.rtl,
-                              style: AppTextStyles.bodyText1,
-                            ),
-                            Text(
-                              'هنا تبدأ رحلتك نحو نجاح متجرك',
-                              textDirection: TextDirection.rtl,
-                              style: AppTextStyles.bodyText1,
-                            ),
-                          ],
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'مرحبا بك!',
+                            textDirection: TextDirection.rtl,
+                            style: AppTextStyles.bodyText1,
+                          ),
+                          Text(
+                            'هنا تبدأ رحلتك نحو نجاح متجرك',
+                            textDirection: TextDirection.rtl,
+                            style: AppTextStyles.bodyText1,
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(width: 20),
+                    SizedBox(
+                      width: 20,
+                    ), // مسافة بين النصوص والصورة
                     Container(
-                      margin: EdgeInsets.only(top: 72),
+                      margin:
+                          EdgeInsets.only(top: 20), // تعديل المسافة من الأعلى
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.green, width: 2),
@@ -73,25 +71,9 @@ class _DATAState extends State<DATA> {
                     ),
                   ],
                 ),
-              ),
+              ],
             ),
-            // Shadowed border
-            // Container(
-            //   width: double.infinity, // Full-width container
-            //   height: 4, // Thickness of the border
-            //   decoration: BoxDecoration(
-            //     color: Colors.green, // Main border color
-            //     boxShadow: [
-            //       BoxShadow(
-            //         color: Colors.green.withOpacity(0.5), // Shadow color
-            //         blurRadius: 20, // Strength of the shadow blur
-            //         spreadRadius: 5, // Spread of the shadow
-            //         offset: Offset(0, 0), // Position of the shadow
-            //       ),
-            //     ],
-            //   ),
-            // ),
-          ],
+          ),
         ),
       ),
       body: Stack(

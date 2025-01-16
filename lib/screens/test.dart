@@ -1,84 +1,130 @@
-// import 'package:file_picker/file_picker.dart';
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class FilePickerDemo extends StatefulWidget {
-//   const FilePickerDemo({super.key, required this.title});
+class TEST extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          shadowColor: const Color.fromARGB(255, 255, 230, 0),
+          backgroundColor: Color(0xff0f2022),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 30,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.green, width: 2),
+                ),
+                child: CircleAvatar(
+                  radius: 30,
+                  backgroundImage:
+                      AssetImage('assets/datai.png'), // Add your image asset
+                ),
+              ),
+            ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              _buildInfoRow('الاسم رباعي:', 'محمد أمح، الصوتي، أبو محمّي'),
+              _buildInfoRow('رقم الهاتف:', '437888+201324543788'),
+              _buildInfoRow('نوع الخدمة:', 'ويد بيلين'),
+              _buildInfoRow('نوع الهاقم:', 'الشزاك ساوي'),
+              _buildInfoRow('اسم الموقع:', 'ZBOOMA'),
+              _buildInfoRow('رابط المنصة:', '/hizbooma.com/'),
+              _buildInfoRow('نوع الهوسك:', 'اسم الهوسك    تيم الفض'),
+              _buildInfoRow('الرقم القومي:', '437888+201324543788'),
+              _buildInfoRow('السجل التجاري:', 'نبي يصحّن استبداله'),
+              _buildInfoRow('IBAN:', 'نبي يصحّن استبداله'),
+              _buildInfoRow('جامعه العزور:', '123456'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
-//   final String title;
-
-//   @override
-//   State<FilePickerDemo> createState() => _FilePickerDemoState();
-// }
-
-// class _FilePickerDemoState extends State<FilePickerDemo> {
-//   FilePickerResult? result;
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: const Text("File picker demo"),
-//         ),
-//         body: Padding(
-//           padding: const EdgeInsets.all(30.0),
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.start,
-//             children: [
-//               if (result != null)
-//                 Padding(
-//                   padding: const EdgeInsets.all(8.0),
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.center,
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       const Text(
-//                         'Selected file:',
-//                         style: TextStyle(
-//                             fontSize: 16, fontWeight: FontWeight.bold),
+  // Helper method to build a row with a label and value
+  Widget _buildInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            flex: 2,
+            child: Text(
+              label,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          Expanded(
+            flex: 3,
+            child: Text(value),
+          ),
+        ],
+      ),
+    );
+  }
+}
+// appBar: PreferredSize(
+//           preferredSize: Size.fromHeight(104), // Set the height of the AppBar
+//           child: Container(
+//             color: Colors.black, // Background color of the AppBar
+//             padding: const EdgeInsets.symmetric(horizontal: 16.0),
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [
+//                 SizedBox(height: 30), // Space from the top
+//                 Row(
+//                   crossAxisAlignment: CrossAxisAlignment.center,
+//                   mainAxisAlignment: MainAxisAlignment.end,
+//                   children: [
+//                     Expanded(
+//                       child: Column(
+//                         crossAxisAlignment: CrossAxisAlignment.end,
+//                         children: [
+//                           Text(
+//                             'مرحبا بك!',
+//                             textDirection: TextDirection.rtl,
+//                             style: TextStyle(
+//                               color: Colors.white,
+//                               fontSize: 16,
+//                               fontWeight: FontWeight.bold,
+//                             ),
+//                           ),
+//                           Text(
+//                             'هنا تبدأ رحلتك نحو نجاح متجرك',
+//                             textDirection: TextDirection.rtl,
+//                             style: TextStyle(
+//                               color: Colors.white,
+//                               fontSize: 14,
+//                             ),
+//                           ),
+//                         ],
 //                       ),
-//                       const SizedBox(
-//                         height: 10,
+//                     ),
+//                     SizedBox(width: 20), // Space between text and avatar
+//                     Container(
+//                       margin: EdgeInsets.only(top: 42), // Adjust the position of the avatar
+//                       decoration: BoxDecoration(
+//                         shape: BoxShape.circle,
+//                         border: Border.all(color: Colors.green, width: 2),
 //                       ),
-//                       ListView.separated(
-//                         shrinkWrap: true,
-//                         itemCount: result?.files.length ?? 0,
-//                         itemBuilder: (context, index) {
-//                           return Text(result?.files[index].name ?? '',
-//                               style: const TextStyle(
-//                                   fontSize: 16, fontWeight: FontWeight.bold));
-//                         },
-//                         separatorBuilder: (BuildContext context, int index) {
-//                           return const SizedBox(
-//                             height: 5,
-//                           );
-//                         },
-//                       )
-//                     ],
-//                   ),
+//                       child: CircleAvatar(
+//                         radius: 30,
+//                         backgroundImage: AssetImage('assets/datai.png'), // Add your image asset
+//                       ),
+//                     ),
+//                   ],
 //                 ),
-//               const Spacer(),
-//               Center(
-//                 child: ElevatedButton(
-//                   onPressed: () async {
-//                     result = await FilePicker.platform
-//                         .pickFiles(allowMultiple: true);
-//                     if (result == null) {
-//                       print("No file selected");
-//                     } else {
-//                       setState(() {});
-//                       for (var element in result!.files) {
-//                         print(element.name);
-//                       }
-//                     }
-//                   },
-//                   child: const Text("File Picker"),
-//                 ),
-//               ),
-//             ],
+//               ],
+//             ),
 //           ),
 //         ),
-//       ),
-//     );
-//   }
-// }
