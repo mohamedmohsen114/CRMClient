@@ -1,21 +1,23 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:zbooma/style/color.dart';
 
 class Custom_field extends StatelessWidget {
-  const Custom_field({
-    Key? key,
-    this.labelText,
-    this.controller,
-    required this.isPassword,
-    this.keyboardType,
-  });
-
-  final String? labelText;
-  final TextEditingController? controller;
+  final TextEditingController controller;
+  final String labelText;
   final bool isPassword;
-  final TextInputType? keyboardType;
+  final TextInputType keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+
+  const Custom_field({
+    required this.controller,
+    required this.labelText,
+    this.isPassword = false,
+    this.keyboardType = TextInputType.text,
+    this.inputFormatters,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class Custom_field extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: TextField(
         keyboardType: keyboardType,
+        inputFormatters: inputFormatters,
         controller: controller,
         obscureText: isPassword,
         textAlign: TextAlign.right,
